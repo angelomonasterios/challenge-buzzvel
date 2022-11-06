@@ -1,0 +1,56 @@
+version: '3.7'
+services:
+    backend:
+        build: ./buzzvel
+        container_name: buzzvel
+        ports:
+            - 9090:80
+        restart: always
+        extra_hosts:
+            - localhost:127.0.0.1
+        hostname: localhost
+        volumes:
+            - ./buzzvel/:/var/www/html
+        environment:
+            - VIRTUAL_HOST=localhost
+            - XDEBUG_MODE=debug
+            - XDEBUG_CONFIG=remote_host=host.docker.internal client_port=4000 remote_enable=1 idekey=phpstorm start_with_request=1 mode=develop,debug client_host=host.docker.internal xdebug.remote_log=/log_path/xdebug.log
+
+        networks:
+            app_subnet:
+                ipv4_address: 172.28.5.10
+    front:
+      build:
+        context: ./buzzvel-front
+      image: 'buzzvel-front'
+      container_name: 'buzzvel-front'
+      restart: always
+      ports:
+        - '3000:3000'
+      networks:
+        app_subnet:
+            ipv4_address: 172.28.5.11
+    db:
+        image: mysql:5.7
+        restart: always
+        environment:
+            MYSQL_DATABASE: 'db'
+            MYSQL_USER: 'admin'
+            MYSQL_PASSWORD: 'admin'
+            MYSQL_ROOT_PASSWORD: 'root'
+        ports:
+            - '3307:3306'
+        expose:
+            - '3307'
+        volumes:
+            - my-db:/var/lib/mysql
+        networks:
+            app_subnet:
+                ipv4_address: 172.28.5.6
+volumes:
+    my-db:
+
+networks:
+    app_subnet:
+        external: true
+        driver: bridge
