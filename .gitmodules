@@ -1,0 +1,6 @@
+[submodule "buzzvel-front"]
+	path = buzzvel-front
+	url = https://github.com/angelomonasterios/buzzvel-front
+[submodule "buzzvel"]
+	path = buzzvel
+	url = https://github.com/angelomonasterios/buzzvel
