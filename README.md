@@ -12,7 +12,7 @@ file in the env.example file of each corresponding folder
 #### steep one
 run this command of git for get all modules
 ~~~~
-git clone --recurse-submodules https://github.com/angelomonasterios/challenge-buzzvel.git~~~~
+git clone --recurse-submodules https://github.com/angelomonasterios/challenge-buzzvel.git
 ~~~~
 
 #### steep two
