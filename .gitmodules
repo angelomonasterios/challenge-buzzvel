@@ -4,3 +4,5 @@
 [submodule "buzzvel"]
 	path = buzzvel
 	url = https://github.com/angelomonasterios/buzzvel
+[submodule "DbConnector"]
+	branch = main
