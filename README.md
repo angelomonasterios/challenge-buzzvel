@@ -42,3 +42,7 @@ docker exec -it buzzvel php artisan migrate
 ~~~~
 
 
+#### steep six  
+go to the url localhost:3000/generate for generate your first QR code 
+
+
